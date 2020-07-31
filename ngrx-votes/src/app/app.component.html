@@ -1,0 +1,21 @@
+<div class="text-center container">
+  <div class="title mt-3 mb-3">NgRx Votes</div>
+  <img class="mb-3" src="assets/ngrx.png" height="150">
+
+  <div *ngIf="post | async as p">
+
+    <div class="text mb-3">
+      <h2>{{ p.text }}</h2>
+      <h4>Votes: {{ p.likes }}</h4>
+    </div>
+
+    <button mat-stroked-button class="upButton mr-2" (click)="upvote()">Upvote</button>
+    <button mat-stroked-button class="downButton ml-1 mr-1" (click)="downvote()">Downvote</button>
+    <button mat-stroked-button class="resetButton ml-2" (click)="resetPost()">Reset</button>
+
+    <br><input type="text" placeholder="Title..." class="mt-3 mb-3" #text><br>
+    <button mat-stroked-button class="editButton" (click)="editText(text.value)">Change Title</button>
+  </div>
+
+</div>
+
