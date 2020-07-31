@@ -35,9 +35,10 @@ export class AppComponent {
   }
 
   editText(text: string) {
-    if (text.length > 0)
+    if (text) {
       this.getRandomColor();
       this.store.dispatch(new PostActions.EditText(text));
+    }
   }
 
   resetPost() {
