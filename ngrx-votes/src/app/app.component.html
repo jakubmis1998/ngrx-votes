@@ -4,9 +4,9 @@
 
   <div *ngIf="post | async as p">
 
-    <div class="text mb-3">
+    <div class="text mb-3 pb-1">
       <h2>{{ p.text }}</h2>
-      <h4>Votes: {{ p.likes }}</h4>
+      <h4>Votes: <span class="likes p-2" [ngStyle]="{'background-color': color}">{{ p.likes }}</span></h4>
     </div>
 
     <button mat-stroked-button class="upButton mr-2" (click)="upvote()">Upvote</button>

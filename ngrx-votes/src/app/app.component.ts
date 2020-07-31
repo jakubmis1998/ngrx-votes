@@ -18,25 +18,40 @@ interface AppState {
 export class AppComponent {
 
   post: Observable<Post>;
+  color: string;
 
   constructor(private store: Store<AppState>) {
     this.post = this.store.select('post');
+    this.getRandomColor();
+  }
+
+  getRandomColor(): void {
+    const letters = '0123456789ABCDEF';
+    let randomHexColor = '#';
+    for (let i = 0; i < 6; i++) {
+      randomHexColor += letters[(Math.floor(Math.random() * 16))];
+    }
+    this.color = randomHexColor;
   }
 
   editText(text: string) {
     if (text.length > 0)
+      this.getRandomColor();
       this.store.dispatch(new PostActions.EditText(text));
   }
 
   resetPost() {
+    this.getRandomColor();
     this.store.dispatch(new PostActions.Reset());
   }
 
   upvote() {
+    this.getRandomColor();
     this.store.dispatch(new PostActions.Upvote());
   }
 
   downvote() {
+    this.getRandomColor();
     this.store.dispatch(new PostActions.Downvote());
   }
 }
